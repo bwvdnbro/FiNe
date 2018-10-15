@@ -22,7 +22,7 @@
  *
  * @brief FiNe: Fitting with Neural nets.
  *
- * @author Bert Vandenbroucke (bv7@st-andrews.ac.uk)
+ * @author Bert Vandenbroucke (bert.vandenbroucke@gmail.com)
  */
 
 #include "Welcome.hpp"

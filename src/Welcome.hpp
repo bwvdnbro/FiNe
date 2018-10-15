@@ -24,6 +24,8 @@
  *
  * @author Bert Vandenbroucke (bert.vandenbroucke@gmail.com)
  */
+#ifndef WELCOME_HPP
+#define WELCOME_HPP
 
 #include "Configuration.hpp"
 
@@ -42,3 +44,5 @@ public:
               << FINE_VERSION_MINOR << std::endl;
   }
 };
+
+#endif // WELCOME_HPP

@@ -18,25 +18,30 @@
  ******************************************************************************/
 
 /**
- * @file testWelcome.cpp
+ * @file Function.hpp
  *
- * @brief Unit test for the Welcome class.
+ * @brief General interface for function representations.
  *
  * @author Bert Vandenbroucke (bert.vandenbroucke@gmail.com)
  */
-
-#include "Welcome.hpp"
+#ifndef FUNCTION_HPP
+#define FUNCTION_HPP
 
 /**
- * @brief Unit test for the Welcome class.
- *
- * @param argc Number of command line arguments.
- * @param argv Command line arguments.
- * @return Exit code: 0 on success.
+ * @brief General interface for function representations.
  */
-int main(int argc, char **argv) {
+class Function {
+public:
+  /**
+   * @brief Get the function value for the given x-value.
+   *
+   * This is a virtual, non-implemented function, meaning that every Function
+   * implementation has to implement its own version of this function.
+   *
+   * @param x x-value.
+   * @return Corresponding y-value.
+   */
+  virtual double operator()(const double x) const = 0;
+};
 
-  Welcome::print_welcome();
-
-  return 0;
-}
+#endif // FUNCTION_HPP

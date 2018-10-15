@@ -18,17 +18,33 @@
  ******************************************************************************/
 
 /**
- * @file testWelcome.cpp
+ * @file testCurveGenerator.cpp
  *
- * @brief Unit test for the Welcome class.
+ * @brief Unit test for the CurveGenerator class.
  *
  * @author Bert Vandenbroucke (bert.vandenbroucke@gmail.com)
  */
 
-#include "Welcome.hpp"
+#include "Curve.hpp"
+#include "CurveGenerator.hpp"
+#include "Function.hpp"
+
+#include <cmath>
+#include <fstream>
+
+class TestFunction : public Function {
+public:
+  /**
+   * @brief Test function.
+   *
+   * @param x x-value.
+   * @return Square root of x.
+   */
+  virtual double operator()(const double x) const { return std::sqrt(x); }
+};
 
 /**
- * @brief Unit test for the Welcome class.
+ * @brief Unit test for the CurveGenerator class.
  *
  * @param argc Number of command line arguments.
  * @param argv Command line arguments.
@@ -36,7 +52,19 @@
  */
 int main(int argc, char **argv) {
 
-  Welcome::print_welcome();
+  CurveGenerator generator(1000, 0., 1.);
+
+  TestFunction func;
+  Curve *curve = generator.generate_curve(func);
+
+  std::ofstream ofile("test_curve_generator.txt");
+  ofile << "# x\ty\n";
+  for (uint_fast32_t i = 0; i < 1000; ++i) {
+    ofile << curve->get_x(i) << "\t" << curve->get_y(i) << "\n";
+  }
+
+  // remember to free the Curve memory!
+  delete curve;
 
   return 0;
 }

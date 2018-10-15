@@ -65,10 +65,20 @@ set(SOURCE_FOLDER "${PROJECT_SOURCE_DIR}/src")
 ## Unit test for welcome message (use this as template for new unit tests)
 set(TESTWELCOME_SOURCES
     testWelcome.cpp
-    
+
     ${SOURCE_FOLDER}/Welcome.hpp)
 add_unit_test(NAME testWelcome
               SOURCES ${TESTWELCOME_SOURCES})
+
+## Unit test for CurveGenerator
+set(TESTCURVEGENERATOR_SOURCES
+    testCurveGenerator.cpp
+
+    ${SOURCE_FOLDER}/Curve.hpp
+    ${SOURCE_FOLDER}/CurveGenerator.hpp
+    ${SOURCE_FOLDER}/Function.hpp)
+add_unit_test(NAME testCurveGenerator
+              SOURCES ${TESTCURVEGENERATOR_SOURCES})
 
 ### Done adding unit tests. Create the 'make check' target #####################
 ### Do not touch these lines unless you know what you're doing! ################
